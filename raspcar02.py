@@ -1,15 +1,16 @@
 import RPi.GPIO as io
-io.setmode(io.BCM)
+io.setmode(io.BCM) # @TODO: is this the best option to access the pin #s?
 import sys, tty, termios, time
 io.cleanup()
 
-
-#speed definition
+# Speed definition
 speed = 100
 print("speed is on 5")
-#Right Wheel
+
+# Right Wheel
 Motor1_input1 = 2
 Motor1_input2 = 4
+
 Motor1_enable = 17
 io.setup(Motor1_input1, io.OUT)
 io.setup(Motor1_input2, io.OUT)
@@ -18,9 +19,10 @@ rw = io.PWM(Motor1_enable,150)
 rw.start(0)
 rw.ChangeDutyCycle(0)
 
-#Left Wheel
+# Left Wheel
 Motor2_input1 = 11
 Motor2_input2 =	10
+
 Motor2_enable = 22
 io.setup(Motor2_input1, io.OUT)
 io.setup(Motor2_input2, io.OUT)
