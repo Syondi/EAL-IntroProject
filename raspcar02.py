@@ -3,6 +3,8 @@ io.setmode(io.BCM) # @TODO: is this the best option to access the pin #s?
 import sys, tty, termios, time
 io.cleanup()
 
+io.setup(12, io.IN, pull_up_down=io.PUD_UP)
+
 # Speed definition
 speed = 100
 print("speed is on 5")
@@ -31,7 +33,7 @@ lw = io.PWM(Motor2_enable,150)
 lw.start(0)
 lw.ChangeDutyCycle(0)
 
-# io.setup(9, io.IN) #Sensor Pin
+# io.setup(26, io.IN) #Sensor Pin
 
 def getch():
 	fd = sys.stdin.fileno()
@@ -118,7 +120,6 @@ def carRotateLeft(tw = 0):
 	lw.ChangeDutyCycle(speed)
 	if(tw != 0):
 		time.sleep(tw)
-
 
 # allOff();
 while True:
