@@ -122,62 +122,68 @@ def carRotateLeft(tw = 0):
 		time.sleep(tw)
 
 # allOff();
-while True:
-	char = getch()
-	#Speed Control
-	if(char == "1"):
-		print("Speed 1")
-		speed = 50
-	if(char == "2"):
-		print("Speed 2")
-		speed = 60
-	if(char == "3"):
-		print("Speed 3")
-		speed = 70
-	if(char == "4"):
-		print("Speed 4")
-		speed = 80
-	if(char == "5"):
-		print("Speed 5")
-		speed = 90
-	if(char == "6"):
-		print("Speed 6 - MAX SPEED")
-		speed = 100
-	if(char == "w"):
-		print("Forward")
-		carForward()
-	if(char == "s"):
-		print("Reverse")
-		carReverse()
-	if(char == "d"):
-		print("Turning right")
-		carRight()
-	if(char == "a"):
-		print("Turning left")
-		carLeft()
-	if(char == "r"):
-		print("Rotating left")
-		carRotateLeft()
-	if(char == "f"):
-		print("Rotating right")
-		carRotateRight()
-	if(char == "q"):
-		print("Car stopped")
-		allOff();
-	if(char == "e"):
-		print("Making 8\'s")
-		carForward(2)
-		carRight(7)
-		carForward(2)
-		carLeft(5)
-		carForward(2)
-		allOff();
-	# if(char == "t"):
-	# 	sensorSteering()
-	if(char == "x"):
-		print("Program ended")
-		break
 
-	char = ""
+while True:
+	input_state = GPIO.input(18)
+	if input_state == False:
+		while True:
+			char = getch()
+			#Speed Control
+			if(char == "1"):
+				print("Speed 1")
+				speed = 50
+			if(char == "2"):
+				print("Speed 2")
+				speed = 60
+			if(char == "3"):
+				print("Speed 3")
+				speed = 70
+			if(char == "4"):
+				print("Speed 4")
+				speed = 80
+			if(char == "5"):
+				print("Speed 5")
+				speed = 90
+			if(char == "6"):
+				print("Speed 6 - MAX SPEED")
+				speed = 100
+			if(char == "w"):
+				print("Forward")
+				carForward()
+			if(char == "s"):
+				print("Reverse")
+				carReverse()
+			if(char == "d"):
+				print("Turning right")
+				carRight()
+			if(char == "a"):
+				print("Turning left")
+				carLeft()
+			if(char == "r"):
+				print("Rotating left")
+				carRotateLeft()
+			if(char == "f"):
+				print("Rotating right")
+				carRotateRight()
+			if(char == "q"):
+				print("Car stopped")
+				allOff();
+			if(char == "e"):
+				print("Making 8\'s")
+				carForward(2)
+				carRight(7)
+				carForward(2)
+				carLeft(5)
+				carForward(2)
+				allOff();
+			# if(char == "t"):
+			# 	sensorSteering()
+			if(char == "x"):
+				print("Program ended")
+				break
+
+			char = ""
+	else:
+		continue
 
 io.cleanup()
